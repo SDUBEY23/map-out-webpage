@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
+import Display from "./Display";
 
 const useStyles = makeStyles({
   container: {
@@ -84,9 +85,7 @@ const Header = () => {
             </div>
           </div>
           <div>
-            <p>
-              Tell me information about yourself and I can help you find a job
-            </p>
+            <Display />
           </div>
         </div>
       </div>
