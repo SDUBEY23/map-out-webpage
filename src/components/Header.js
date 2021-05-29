@@ -50,6 +50,16 @@ const useStyles = makeStyles({
     borderRadius: "0.25rem",
     textAlign: "center",
   },
+  splitLeft: {
+    height: "100%",
+    width: "50%",
+
+    position: "fixed",
+    zIndex: "1",
+    top: "0",
+    overflowX: "hidden",
+    paddingTop: "20px",
+  },
 });
 
 const Header = () => {
@@ -57,7 +67,7 @@ const Header = () => {
   return (
     <>
       <div className={classes.container}>
-        <div className={classes.grid}>
+        <div className={classes.split}>
           <div>
             <p>
               Tell me information about yourself and I can help you find a job
@@ -84,9 +94,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div>
-            <Display />
-          </div>
+          <div></div>
         </div>
       </div>
     </>

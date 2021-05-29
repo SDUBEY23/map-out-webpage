@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles, IconButton, Grid } from "@material-ui/core";
+import { makeStyles, IconButton } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
@@ -333,6 +333,14 @@ const Display = () => {
             </a>
           </div>
         </div>
+      </div>
+      <div>
+        <IconButton>
+          <ShareIcon />
+        </IconButton>
+        <IconButton>
+          <GetAppIcon />
+        </IconButton>
       </div>
     </div>
   );
