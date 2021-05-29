@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   container: {
     maxWidth: "1100px",
     margin: "0 10px",
-    overflow: "auto",
+    overflowX: "hidden",
     padding: "0 40px",
   },
   grid: {
@@ -32,7 +32,11 @@ const useStyles = makeStyles({
   },
   subtitle: {
     color: "#9CA3AF",
-    marginTop: "2rem",
+    marginTop: "0rem",
+    marginLeft: "8px",
+  },
+  heading: {
+    fontSize: "16px",
   },
   btn: {
     display: "inline-block",
@@ -44,9 +48,13 @@ const useStyles = makeStyles({
   },
   flex: {
     display: "flex",
-    justifyContent: "space-between",
     alignItems: "center",
     height: "100%",
+  },
+  flex1: {
+    display: "flex",
+    alignItems: "center",
+    margin: "0px 5px",
   },
   btnBlock: {
     display: "inline-block",
@@ -86,6 +94,33 @@ const useStyles = makeStyles({
     margin: "1.5em 10px",
     padding: "0.5em 10px",
   },
+  textStyle: {
+    fontSize: "12px",
+  },
+  quote: {
+    display: "inline-block",
+    backgroundColor: "#FEE2E2",
+    margin: "10px",
+    textAlign: "center",
+  },
+  skills: {
+    display: "inline-block",
+    padding: "0.5rem",
+    backgroundColor: "#D1D5DB",
+    textAlign: "center",
+    borderRadius: "0.25rem",
+    textDecoration: "none",
+    fontSize: "12px",
+    color: "#6B7280",
+    margin: "5px",
+  },
+  my0: {
+    margin: "0px",
+    padding: "0px",
+  },
+  icons: {
+    textAlign: "right",
+  },
 });
 
 const Display = () => {
@@ -101,23 +136,27 @@ const Display = () => {
     <div>
       <div className={classes.grid}>
         <div>
-          <IconButton>
-            <FacebookIcon />
-          </IconButton>
-          <IconButton>
-            <TwitterIcon />
-          </IconButton>
-          <IconButton>
-            <GitHubIcon />
-          </IconButton>
+          <div className={classes.flex}>
+            <IconButton>
+              <FacebookIcon />
+            </IconButton>
+            <IconButton>
+              <TwitterIcon />
+            </IconButton>
+            <IconButton>
+              <GitHubIcon />
+            </IconButton>
+          </div>
           <div className={classes.imageBlock}>
-            <h1>{info.firstName}</h1>
-            <h1>{info.middleName}</h1>
-            <h1>{info.lastName}</h1>
+            <h1 className={classes.heading}>{info.firstName}</h1>
+            <h1 className={classes.heading}>{info.middleName}</h1>
+            <h1 className={classes.heading}>{info.lastName}</h1>
           </div>
           <div className={classes.flex}>
-            <p style={{ fontSize: "12px", marginLeft: "5px" }}>
-              Available From
+            <p
+              style={{ fontSize: "12px", marginLeft: "5px", color: "#9CA3AF" }}
+            >
+              Available For
             </p>
             <p
               style={{
@@ -136,6 +175,37 @@ const Display = () => {
               }}
             >
               Immediate
+            </p>
+          </div>
+
+          <div className={classes.flex}>
+            <p
+              style={{
+                fontSize: "12px",
+                marginLeft: "5px",
+                marginTop: "0px",
+                color: "#9CA3AF",
+              }}
+            >
+              Available From
+            </p>
+            <p
+              style={{
+                fontSize: "12px",
+                marginLeft: "5px",
+                marginTop: "0px",
+              }}
+            >
+              Contract
+            </p>
+            <p
+              style={{
+                fontSize: "12px",
+                marginLeft: "5px",
+                marginTop: "0px",
+              }}
+            >
+              20/01/2001
             </p>
           </div>
           <div className={classes.flex}>
@@ -157,8 +227,8 @@ const Display = () => {
             </p>
           </div>
           <div>
-            <p>Career Headline</p>
-            <p>
+            <p className={classes.subtitle}>Career Headline</p>
+            <p className={classes.textStyle}>
               It is possible to commit no mistake and still lose.This is not a
               weakness,that's life
             </p>
@@ -166,25 +236,29 @@ const Display = () => {
           <div>
             <div className={classes.flex}>
               <div>
-                <p>Motivation For Job Search</p>
+                <p className={classes.subtitle}>Motivation For Job Search</p>
                 <div className={classes.flex}>
-                  <p>First job</p>
-                  <p>Carrer Change</p>
+                  <p style={{ marginLeft: "5px", marginTop: "0px" }}>
+                    First job
+                  </p>
+                  <p style={{ marginLeft: "5px", marginTop: "0px" }}>
+                    Carrer Change
+                  </p>
                 </div>
               </div>
               <div>
-                <p>Work preferences</p>
+                <p className={classes.subtitle}>Work preferences</p>
                 <p>Remote Only</p>
               </div>
             </div>
           </div>
           <div className={classes.grid}>
             <div>
-              <p>Role Preferences</p>
+              <p className={classes.subtitle}>Role Preferences</p>
               <p>Senior UI/UX Designer</p>
             </div>
             <div>
-              <p>Industry Preferences </p>
+              <p className={classes.subtitle}>Industry Preferences </p>
               <p>Full Stack Engineer</p>
             </div>
           </div>
@@ -217,10 +291,27 @@ const Display = () => {
         </div>
         <div>
           <h1>Technical Skills</h1>
+          <div>
+            <a href="!#" className={classes.skills}>
+              Javascript | 5years
+            </a>
+            <a href="!#" className={classes.skills}>
+              Angular | 5years
+            </a>
+            <a href="!#" className={classes.skills}>
+              UI/UX Design | 5years
+            </a>
+            <a href="!#" className={classes.skills}>
+              Professional | 5years
+            </a>
+            <a href="!#" className={classes.skills}>
+              HTML | 5years
+            </a>
+          </div>
         </div>
       </div>
       <div className={classes.grid1}>
-        <article>
+        <article className={classes.quote}>
           <h1>Moto I live By</h1>
           <blockquote>
             <p>
@@ -233,66 +324,154 @@ const Display = () => {
       <div className={classes.grid}>
         <div className={classes.grid1}>
           <div>
-            <h3>WHAT MATTERS TO ME</h3>
+            <h3 className={classes.subtitle}>WHAT MATTERS TO ME</h3>
+            <div className={classes.flex1}>
+              <a href="!#" className={classes.skills}>
+                Javascript
+              </a>
+              <a href="!#" className={classes.skills}>
+                Angular
+              </a>
+              <a href="!#" className={classes.skills}>
+                UI Design
+              </a>
+              <a href="!#" className={classes.skills}>
+                Professional
+              </a>
+              <a href="!#" className={classes.skills}>
+                HTML
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 className={classes.subtitle}>QUALITIES I BRING</h3>
+            <div className={classes.flex1}>
+              <a href="!#" className={classes.skills}>
+                Javascript
+              </a>
+              <a href="!#" className={classes.skills}>
+                Angular
+              </a>
+              <a href="!#" className={classes.skills}>
+                UI Design
+              </a>
+              <a href="!#" className={classes.skills}>
+                Professional
+              </a>
+              <a href="!#" className={classes.skills}>
+                HTML
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 className={classes.subtitle}>
+              QUALITIES I SEEK IN AN EMPLOYER
+            </h3>
+            <div className={classes.flex1}>
+              <a href="!#" className={classes.skills}>
+                Javascript
+              </a>
+              <a href="!#" className={classes.skills}>
+                Angular
+              </a>
+              <a href="!#" className={classes.skills}>
+                UI Design
+              </a>
+              <a href="!#" className={classes.skills}>
+                Professional
+              </a>
+              <a href="!#" className={classes.skills}>
+                HTML
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 className={classes.subtitle}>COMPANIES THAT INSPIRE ME</h3>
             <div></div>
           </div>
           <div>
-            <h3>QUALITIES I BRING</h3>
-            <div></div>
-          </div>
-          <div>
-            <h3>QUALITIES I SEEK IN AN EMPLOYER</h3>
-            <div></div>
-          </div>
-          <div>
-            <h3>COMPANIES THAT INSPIRE ME</h3>
-            <div></div>
-          </div>
-          <div>
-            <h3>IN 5 YEARS FRO NOW I WILL BE HAPPY</h3>
-            <div></div>
+            <h3 className={classes.subtitle}>
+              IN 5 YEARS FRO NOW I WILL BE HAPPY
+            </h3>
+            <div>
+              <p>If I possible to commit no mistake and still lose.</p>
+            </div>
           </div>
         </div>
         <div className={classes.grid1}>
           <div>
             <h3>SOFT SKILLS</h3>
-            <div></div>
+            <div className={classes.flex1}>
+              <a href="!#" className={classes.skills}>
+                Javascript
+              </a>
+              <a href="!#" className={classes.skills}>
+                Angular
+              </a>
+              <a href="!#" className={classes.skills}>
+                UI Design
+              </a>
+              <a href="!#" className={classes.skills}>
+                Professional
+              </a>
+              <a href="!#" className={classes.skills}>
+                HTML
+              </a>
+            </div>
           </div>
           <div>
-            <h3>HOBBIES AND INTRESTS</h3>
+            <h3 className={classes.subtitle}>HOBBIES AND INTRESTS</h3>
             <div></div>
           </div>
           <div>
             <h3>LANGUAGES</h3>
             <div></div>
           </div>
-          <div>
+          <div className={classes.flex1}>
             <h3>English</h3>
-            <div></div>
+            <div
+              style={{
+                marginLeft: "50px",
+              }}
+            >
+              Fluent
+            </div>
           </div>
-          <div>
+          <div className={classes.flex1}>
             <h3>Spanish</h3>
-            <div></div>
+            <div
+              style={{
+                marginLeft: "50px",
+              }}
+            >
+              Native
+            </div>
           </div>
-          <div>
+          <div className={classes.flex1}>
             <h3>French</h3>
-            <div></div>
+            <div
+              style={{
+                marginLeft: "50px",
+              }}
+            >
+              Basic
+            </div>
           </div>
         </div>
       </div>
       <div className={classes.grid}>
         <div>
           <h1>Work Experience</h1>
-          <h3>Graphic Designer</h3>
-          <small>Wizard Studio</small>
+          <h3 className={classes.my0}>Graphic Designer</h3>
+          <small className={classes.my0}>Wizard Studio</small>
           <ul>
             <li>Developing Professional Agency</li>
             <li>Perspectives on Education</li>
             <li>Historical and perspective issues</li>
             <li>Childhood,Social Justice</li>
           </ul>
-          <h3>UI/UX Lead Product Designer</h3>
-          <small>Company Name</small>
+          <h3 className={classes.my0}>UI/UX Lead Product Designer</h3>
+          <small className={classes.my0}>Company Name</small>
           <ul>
             <li>Working with the team</li>
             <li>Create ERP,CRM</li>
@@ -302,8 +481,8 @@ const Display = () => {
         </div>
         <div>
           <h3>WHAT OTHERS SAY ABOUT ME</h3>
-          <h3>Graphic Designer</h3>
-          <small>Company Name</small>
+          <h3 className={classes.my0}>Graphic Designer</h3>
+          <small className={classes.my0}>Company Name</small>
           <ul>
             <li>Developing Professional Agency</li>
             <li>Perspectives on education</li>
@@ -334,7 +513,7 @@ const Display = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className={classes.icons}>
         <IconButton>
           <ShareIcon />
         </IconButton>

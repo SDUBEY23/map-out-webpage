@@ -16,12 +16,12 @@ import {
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiFormControl-root": {
-      width: "30%",
+      width: "25%",
       margin: theme.spacing(1),
     },
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: "20ch",
+      width: "15ch",
     },
   },
   grid: {
@@ -32,20 +32,40 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     height: "100%",
   },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: "30%",
-    width: "50%",
+
+  heading: {
+    margin: "2rem",
+  },
+  container: {
+    marginLeft: "10px",
+    paddingLeft: "10px",
   },
 }));
+
+const monthNames = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+const yearsName = ["1990", "1991", "1993", "1994"];
 
 const initialValues = {
   firstName: "",
   middleName: "",
   lastName: "",
   gender: "male",
-  ethnicity: "",
-  disability: "",
+  ethnicity: [{ A: "", B: "", C: "" }],
+  disability: [{ Y: "", N: "" }],
   nationality: "",
   month: "",
   year: "",
@@ -77,185 +97,175 @@ const BasicInfo = () => {
 
   return (
     <>
-      <h1>Basic Info</h1>
-      <form className={classes.root}>
-        <Grid container>
-          <Grid item xs={6}>
-            <TextField
-              label="First Name"
-              name="firstName"
-              onChange={handleInputChange}
-              value={values.firstName}
-            />
-            <TextField
-              label="Middle Name"
-              name="middleName"
-              value={values.middleName}
-              onChange={handleInputChange}
-            />
-            <TextField
-              label="Last Name"
-              name="lastName"
-              value={values.lastName}
-              onChange={handleInputChange}
-            />
+      <div className={classes.container}>
+        <h1 className={classes.heading}>Basic Info</h1>
+        <form className={classes.root}>
+          <Grid container>
+            <Grid item>
+              <TextField
+                label="First Name"
+                name="firstName"
+                onChange={handleInputChange}
+                value={values.firstName}
+              />
+              <TextField
+                label="Middle Name"
+                name="middleName"
+                value={values.middleName}
+                onChange={handleInputChange}
+              />
+              <TextField
+                label="Last Name"
+                name="lastName"
+                value={values.lastName}
+                onChange={handleInputChange}
+              />
+            </Grid>
+            <div className={classes.grid}>
+              <FormControl>
+                <FormLabel>Gender</FormLabel>
+                <RadioGroup
+                  row
+                  name="gender"
+                  value={values.gender}
+                  onChange={handleInputChange}
+                >
+                  <FormControlLabel
+                    value="male"
+                    control={<Radio />}
+                    label="Male"
+                  />
+                  <FormControlLabel
+                    value="female"
+                    control={<Radio />}
+                    label="Female"
+                  />
+                  <FormControlLabel
+                    value="non-binary"
+                    control={<Radio />}
+                    label="Non-binary"
+                  />
+                  <FormControlLabel
+                    value="nodisclose"
+                    control={<Radio />}
+                    label="Prefer Not To Disclose"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </div>
           </Grid>
           <div>
             <FormControl>
-              <FormLabel>Gender</FormLabel>
-              <RadioGroup
-                row
-                name="gender"
-                value={values.gender}
+              <InputLabel htmlFor="grouped-native-select">Ethnicity</InputLabel>
+              <Select
+                label="Ethnicity"
+                name="ethnicity"
+                value={values.ethnicity}
                 onChange={handleInputChange}
               >
-                <FormControlLabel
-                  value="male"
-                  control={<Radio />}
-                  label="Male"
-                />
-                <FormControlLabel
-                  value="female"
-                  control={<Radio />}
-                  label="Female"
-                />
-                <FormControlLabel
-                  value="non-binary"
-                  control={<Radio />}
-                  label="Non-binary"
-                />
-                <FormControlLabel
-                  value="nodisclose"
-                  control={<Radio />}
-                  label="Prefer Not To Disclose"
-                />
-              </RadioGroup>
+                <MenuItem value="A">A</MenuItem>
+                <MenuItem value="B">B</MenuItem>
+                <MenuItem value="C">C</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl>
+              <InputLabel>Any Disability</InputLabel>
+              <Select
+                label="Any Disability"
+                name="disability"
+                value={values.disability}
+                onChange={handleInputChange}
+              >
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl>
+              <InputLabel>Nationality</InputLabel>
+              <Select
+                label="Nationality"
+                name="nationality"
+                value={values.nationality}
+                onChange={handleInputChange}
+              >
+                <MenuItem value="Indian">Indian</MenuItem>
+                <MenuItem value="British">British</MenuItem>
+                <MenuItem value="American">American</MenuItem>
+              </Select>
             </FormControl>
           </div>
-        </Grid>
-        <div className={classes.formControl}>
-          <FormControl>
-            <InputLabel htmlFor="grouped-native-select">Ethnicity</InputLabel>
-            <Select
-              label="Ethnicity"
-              name="ethnicity"
-              value={values.ethnicity}
+          <div className={classes.formControl}>
+            <h3>Date Of Birth</h3>
+            <FormControl>
+              <InputLabel>Month</InputLabel>
+              <Select
+                label="Month"
+                name="month"
+                value={values.month}
+                onChange={handleInputChange}
+              >
+                {monthNames.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl>
+              <InputLabel>Year</InputLabel>
+              <Select
+                label="Year"
+                name="year"
+                value={values.year}
+                onChange={handleInputChange}
+              >
+                {yearsName.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+          <div>
+            <TextField
+              label="Email"
+              name="email"
+              value={values.email}
               onChange={handleInputChange}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl>
-            <InputLabel>Any Disability</InputLabel>
-            <Select
-              label="Any Disability"
-              name="disability"
-              value={values.disability}
+            />
+            <TextField
+              label="Mobile Number"
+              name="mobileNumber"
+              value={values.mobileNumber}
               onChange={handleInputChange}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl>
-            <InputLabel>Nationality</InputLabel>
-            <Select
-              label="Nationality"
-              name="nationality"
-              value={values.nationality}
+            />
+          </div>
+          <Grid item>
+            <TextField
+              label="LinkedIn Link"
+              name="linkedIn"
+              value={values.linkedIn}
               onChange={handleInputChange}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
-        <div className={classes.formControl}>
-          <h3>Date Of Birth</h3>
-          <FormControl>
-            <InputLabel>Month</InputLabel>
-            <Select
-              label="Month"
-              name="month"
-              value={values.month}
+            />
+            <TextField
+              label="Twitter Link"
+              name="twitter"
+              value={values.twitter}
               onChange={handleInputChange}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl>
-            <InputLabel>Year</InputLabel>
-            <Select
-              label="Year"
-              name="year"
-              value={values.year}
+            />
+            <TextField
+              label="GitHub"
+              name="github"
+              value={values.github}
               onChange={handleInputChange}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
-        <div>
-          <TextField
-            label="Email"
-            name="email"
-            value={values.email}
-            onChange={handleInputChange}
-          />
-          <TextField
-            label="Mobile Number"
-            name="mobileNumber"
-            value={values.mobileNumber}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <TextField
-            label="LinkedIn account link"
-            name="linkedIn"
-            value={values.linkedIn}
-            onChange={handleInputChange}
-          />
-          <TextField
-            label="Twitter account link"
-            name="twitter"
-            value={values.twitter}
-            onChange={handleInputChange}
-          />
-          <TextField
-            label="GitHub"
-            name="github"
-            value={values.github}
-            onChange={handleInputChange}
-          />
-        </div>
-        <button type="submit" onClick={handleSubmit}>
-          Submit
-        </button>
-      </form>
+            />
+          </Grid>
+          <button type="submit" onClick={handleSubmit}>
+            Submit
+          </button>
+        </form>
+      </div>
     </>
   );
 };

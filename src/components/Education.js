@@ -9,6 +9,16 @@ import {
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiFormControl-root": {
+      width: "25%",
+      margin: theme.spacing(1),
+    },
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "15ch",
+    },
+  },
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(2, 1fr)",
@@ -24,12 +34,13 @@ const useStyles = makeStyles((theme) => ({
   grid4: {
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)",
+    marginLeft: "1.5re",
   },
   container: {
-    maxWidth: "1100px",
-    margin: "0 10px",
-    overflow: "auto",
-    padding: "0 40px",
+    marginLeft: "10px",
+    marginRight: "10px",
+    paddingLeft: "10px",
+    paddingRight: "10px",
   },
   btnBlock: {
     display: "inline-block",
@@ -52,6 +63,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: "30%",
     width: "50%",
+  },
+  textField: {
+    margin: "5px",
   },
 }));
 
@@ -88,15 +102,15 @@ const Education = () => {
             <div className={classes.grid}>
               <h3 className={classes.subtitle}>School/College</h3>
             </div>
-            <div className={classes.grid}>
+            <div>
               <TextField
-                label="Name of the Institution/Platform"
+                label="Name of the Institution"
                 name="institutionName"
                 onChange={handleInputChange}
                 value={values.institutionName}
               />
             </div>
-            <div className={classes.grid}>
+            <div>
               <TextField
                 label="Specialization"
                 name="specialization"
@@ -104,9 +118,9 @@ const Education = () => {
                 value={values.specialization}
               />
             </div>
-            <div className={classes.grid}>
+            <div>
               <TextField
-                label="Degree/Diploma/Certification Name"
+                label="Degree/Certification Name"
                 name="degree"
                 onChange={handleInputChange}
                 value={values.degree}
@@ -164,35 +178,39 @@ const Education = () => {
                 </Select>
               </FormControl>
             </div>
-            <div className={classes.grid}>
+            <div>
               <div className={classes.grid4}>
                 <TextField
                   label="Subject1"
                   name="subject1"
+                  className={classes.textField}
                   onChange={handleInputChange}
                   value={values.subject1}
                 />
                 <TextField
                   label="Subject2"
                   name="subject1"
+                  className={classes.textField}
                   onChange={handleInputChange}
                   value={values.degree}
                 />
                 <TextField
                   label="Subject3"
                   name="subject3"
+                  className={classes.textField}
                   onChange={handleInputChange}
                   value={values.degree}
                 />
                 <TextField
                   label="Subject4"
                   name="subject4"
+                  className={classes.textField}
                   onChange={handleInputChange}
                   value={values.degree}
                 />
               </div>
             </div>
-            <div className={classes.grid}>
+            <div style={{ margin: "10px" }}>
               <div className={classes.grid1}>
                 <a href="!#" className={classes.btnBlock}>
                   Add More Subjects

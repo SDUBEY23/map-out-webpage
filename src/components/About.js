@@ -11,6 +11,18 @@ import {
 import React, { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiFormControl-root": {
+      width: "50%",
+      margin: theme.spacing(1),
+    },
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "20ch",
+      // width: "60px",
+    },
+  },
+
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(2, 1fr)",
@@ -22,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   grid1: {
     display: "grid",
     gridTemplateColumns: "repeat(1, 1fr)",
+    width: "80%",
   },
   container: {
     maxWidth: "1100px",
@@ -38,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     textDecoration: "none",
     color: "black",
+    margin: "10px",
   },
 }));
 
@@ -67,7 +81,7 @@ const About = () => {
       <h3>About Me</h3>
       <form>
         <div className={classes.container}>
-          <div className={classes.grid}>
+          <div>
             <TextField
               label="A moto live by"
               name="moto"
@@ -75,7 +89,7 @@ const About = () => {
               value={values.moto}
             />
           </div>
-          <div className={classes.grid}>
+          <div>
             <TextField
               label="What matters to me"
               name="matters"
@@ -83,7 +97,7 @@ const About = () => {
               value={values.matters}
             />
           </div>
-          <div className={classes.grid}>
+          <div className={classes.grid1}>
             <FormControl>
               <InputLabel htmlFor="grouped-native-select">
                 Hobbies and Intrests
@@ -94,16 +108,13 @@ const About = () => {
                 value={values.hobbies}
                 onChange={handleInputChange}
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value="Movies">Movies</MenuItem>
+                <MenuItem value="Trecking">Trecking</MenuItem>
+                <MenuItem value="Travelling">Travelling</MenuItem>
               </Select>
             </FormControl>
           </div>
-          <div className={classes.grid}>
+          <div className={classes.grid1}>
             <FormControl>
               <InputLabel htmlFor="grouped-native-select">
                 Qualities I Bring
@@ -123,7 +134,7 @@ const About = () => {
               </Select>
             </FormControl>
           </div>
-          <div className={classes.grid}>
+          <div className={classes.grid1}>
             <FormControl>
               <InputLabel htmlFor="grouped-native-select">
                 Qualities I Seek I an employer
@@ -143,7 +154,7 @@ const About = () => {
               </Select>
             </FormControl>
           </div>
-          <div className={classes.grid}>
+          <div className={classes.grid1}>
             <FormControl>
               <InputLabel htmlFor="grouped-native-select">
                 Companies that Inspire me
@@ -163,7 +174,7 @@ const About = () => {
               </Select>
             </FormControl>
           </div>
-          <div className={classes.grid}>
+          <div>
             <div className={classes.grid}>
               <FormControl>
                 <InputLabel htmlFor="grouped-native-select">
@@ -183,8 +194,6 @@ const About = () => {
                   <MenuItem value={30}>Thirty</MenuItem>
                 </Select>
               </FormControl>
-            </div>
-            <div>
               <ButtonGroup
                 variant="contained"
                 color="primary"
