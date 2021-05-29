@@ -125,13 +125,15 @@ const useStyles = makeStyles({
 
 const Display = () => {
   const classes = useStyles();
-  const [info, setInfo] = useState({
-    firstName: "firstName",
-  });
+  const [info, setInfo] = useState([]);
   useEffect(() => {
     let response = localStorage.getItem("basicInfo");
-    response = JSON.parse(response);
-    setInfo(response);
+    if (response) {
+      response = JSON.parse(response);
+      setInfo(response);
+    } else {
+      return [];
+    }
   }, []);
   console.log(info);
   return (
