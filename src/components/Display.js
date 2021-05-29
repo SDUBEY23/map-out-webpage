@@ -125,7 +125,9 @@ const useStyles = makeStyles({
 
 const Display = () => {
   const classes = useStyles();
-  const [info, setInfo] = useState([]);
+  const [info, setInfo] = useState({
+    firstName: "firstName",
+  });
   useEffect(() => {
     let response = localStorage.getItem("basicInfo");
     response = JSON.parse(response);

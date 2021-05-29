@@ -32,7 +32,21 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     height: "100%",
   },
-
+  grid1: {
+    display: "grid",
+    gridTemplateColumns: "repeat(1, 1fr)",
+  },
+  btnBlock: {
+    display: "inline-block",
+    padding: "0.5rem 1rem",
+    width: "80%",
+    backgroundColor: "#FCA5A5",
+    borderRadius: "0.25rem",
+    textAlign: "center",
+    textDecoration: "none",
+    color: "black",
+    boxShadow: "none",
+  },
   heading: {
     margin: "2rem",
   },
@@ -63,7 +77,7 @@ const initialValues = {
   firstName: "",
   middleName: "",
   lastName: "",
-  gender: "male",
+  gender: "",
   ethnicity: [{ A: "", B: "", C: "" }],
   disability: [{ Y: "", N: "" }],
   nationality: "",
@@ -261,9 +275,15 @@ const BasicInfo = () => {
               onChange={handleInputChange}
             />
           </Grid>
-          <button type="submit" onClick={handleSubmit}>
-            Submit
-          </button>
+          <div className={classes.grid1}>
+            <button
+              className={classes.btnBlock}
+              type="submit"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </>
